@@ -125,7 +125,7 @@
 
         private void PrintList()
         {
-            if (_todo.List.Count == 0 )
+            if (_todo.Count == 0 )
             {
                 Console.WriteLine("The list is empty!");
                 return;

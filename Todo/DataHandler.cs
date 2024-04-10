@@ -20,19 +20,6 @@ namespace Todo
             ReadCSV();
         }
 
-        public void PrintCSV()
-        {
-            ReadCSV();
-
-            foreach (string line in _data)
-            {
-                foreach (string word in line.Split(','))
-                {
-                    Console.WriteLine(word);
-                }
-            }
-        }
-
         public void WriteToCSV(string data)
         {
             try

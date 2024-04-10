@@ -35,7 +35,7 @@
         }
 
 
-        private List<string> List
+        internal List<string> List
         {
             get { return _list; }
         }
