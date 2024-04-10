@@ -6,18 +6,9 @@ namespace Todo
     {
         static void Main(string[] args)
         {
-            //UI ui = new();
+            UI ui = new();
 
-            //ui.Start();
-
-            var dataHandler = new DataHandler();
-
-            dataHandler.WriteToCSV("Test");
-            dataHandler.WriteToCSV("Hello");
-            dataHandler.WriteToCSV("Beep");
-            dataHandler.WriteToCSV("Okay");
-
-            dataHandler.PrintCSV();
+            ui.Start();
         }
     }
 }
