@@ -3,14 +3,14 @@
     public class UI
     {
         private readonly Todo _todo;
-        public UI() 
+        public UI()
         {
             _todo = new Todo();
         }
 
         public void Start()
         {
-            while(true)
+            while (true)
             {
                 string input = AskForCommand();
 
@@ -63,7 +63,7 @@
                 type "exit" to stop
                 """);
             Console.WriteLine();
-            
+
             string input = Console.ReadLine()!;
 
             if (input.ToLower() == "exit")
@@ -73,7 +73,7 @@
 
             if (input != "1" && input != "2" && input != "3" && input != "4")
             {
-               return AskForCommand();
+                return AskForCommand();
             }
 
             return input;
@@ -92,7 +92,7 @@
 
         private void RemoveItem()
         {
-            if ( _todo.Count == 0 )
+            if (_todo.Count == 0)
             {
                 Console.WriteLine("Cannot remove items, List is empty");
                 return;
@@ -106,12 +106,13 @@
             {
                 numberToRemove = int.Parse(Console.ReadLine()!) - 1;
 
-            } catch(FormatException e)
+            }
+            catch (FormatException e)
             {
                 Console.WriteLine(e.Message);
                 throw;
             }
-               
+
             _todo.Remove(numberToRemove);
 
             Console.WriteLine(numberToRemove);
@@ -125,13 +126,13 @@
 
         private void PrintList()
         {
-            if (_todo.Count == 0 )
+            if (_todo.Count == 0)
             {
                 Console.WriteLine("The list is empty!");
                 return;
             }
 
-            foreach (var item in _todo.List.Select((value, index) => new {value, index}))
+            foreach (var item in _todo.List.Select((value, index) => new { value, index }))
             {
                 Console.WriteLine($"{item.index + 1}: {item.value}");
             }

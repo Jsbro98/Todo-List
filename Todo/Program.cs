@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Todo
+﻿namespace Todo
 {
     public class Program
     {

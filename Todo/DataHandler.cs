@@ -1,5 +1,3 @@
-using System;
-
 namespace Todo
 {
     public class DataHandler
@@ -28,7 +26,8 @@ namespace Todo
                 if (_data.Count > 0)
                 {
                     input = $",{data}";
-                } else
+                }
+                else
                 {
                     input = $"{data}";
                 }
@@ -38,7 +37,8 @@ namespace Todo
                 sw.Write(input);
                 _data.Add(data);
 
-            } catch (IOException e)
+            }
+            catch (IOException e)
             {
                 Console.WriteLine(e.Message);
                 throw;
@@ -51,7 +51,7 @@ namespace Todo
             {
                 _data.Remove(key);
                 Reset(false);
-                
+
                 using StreamWriter sw = new(_path, true);
                 for (int i = 0; i < _data.Count; i++)
                 {
@@ -64,7 +64,8 @@ namespace Todo
                     sw.Write($",{_data[i]}");
                 }
 
-            } catch (InvalidOperationException e)
+            }
+            catch (InvalidOperationException e)
             {
                 Console.WriteLine(e.Message);
                 throw;
@@ -96,8 +97,8 @@ namespace Todo
                 _data.Add(words[0]);
                 return;
             }
-            
-            foreach(string word in words[0].Split(','))
+
+            foreach (string word in words[0].Split(','))
             {
                 _data.Add(word);
             }
