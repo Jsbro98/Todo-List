@@ -137,9 +137,6 @@
             }
         }
 
-        private void NewLine()
-        {
-            Console.WriteLine();
-        }
+        private void NewLine() => Console.WriteLine();
     }
 }
