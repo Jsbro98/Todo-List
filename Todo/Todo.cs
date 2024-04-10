@@ -3,30 +3,34 @@
     public class Todo
     {
         private readonly List<string> _list;
-        private DataHandler _handler;
+        private readonly DataHandler _handler;
         public Todo()
         {
             _list = [];
-            _handler = new DataHandler();
+            _handler = new DataHandler(_list);
+
+            InitList();
         }
 
         public void Add(string input)
         {
-            List.Add(input);
             DataHandler.WriteToCSV(input);
         }
 
         public void Remove(int number)
         {
-            List.RemoveAt(number);
+            if (number < List.Count || number < 1)
+            {
+                Console.WriteLine("number is not in range!");
+                return;
+            }
 
+            DataHandler.Remove(List[number]);
         }
 
         public void Clear()
         {
-            List.Clear();
-            File.Delete("data.csv");
-            File.Create("data.csv").Close();
+            DataHandler.Reset(true);
         }
 
         public int Count
@@ -43,6 +47,15 @@
         private DataHandler DataHandler
         {
             get { return _handler; }
+        }
+
+        private void InitList()
+        {
+            string fileName = "data.csv";
+            if (File.Exists(fileName) && new FileInfo(fileName).Length != 0)
+            {
+                DataHandler.ReadCSV();
+            }
         }
     }
 }
