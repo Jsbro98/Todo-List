@@ -28,23 +28,19 @@
             switch (input)
             {
                 case "1":
-                    AddItem();
-                    NewLine();
+                    ExecuteCommand(AddItem);
                     break;
 
                 case "2":
-                    RemoveItem();
-                    NewLine();
+                    ExecuteCommand(RemoveItem);
                     break;
 
                 case "3":
-                    Clear();
-                    NewLine();
+                    ExecuteCommand(Clear);
                     break;
 
                 case "4":
-                    PrintList();
-                    NewLine();
+                    ExecuteCommand(PrintList);
                     break;
 
                 default:
@@ -52,17 +48,30 @@
                     break;
             }
         }
+
+        // Higher order method for easier method processing
+        private void ExecuteCommand(Action command)
+        {
+            WriteOutput();
+            command();
+            NewLine();
+        }
+
+
         private string AskForCommand()
         {
-            Console.WriteLine("What would you like to do with your todo list?");
+            Console.WriteLine("----What would you like to do with your todo list?----");
             Console.WriteLine("""
+
+                ----------------------------------
                 1. Add an item
                 2. Remove an item
                 3. Clear the list
                 4. Print the list
                 type "exit" to stop
+                ----------------------------------
+
                 """);
-            Console.WriteLine();
 
             string input = Console.ReadLine()!;
 
@@ -139,5 +148,6 @@
         }
 
         private void NewLine() => Console.WriteLine();
+        private void WriteOutput() => Console.WriteLine("----OUTPUT----");
     }
 }
