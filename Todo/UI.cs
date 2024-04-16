@@ -52,7 +52,6 @@
         // Higher order method for easier method processing
         private void ExecuteCommand(Action command)
         {
-            WriteOutput();
             command();
             NewLine();
         }
@@ -96,6 +95,8 @@
             if (!string.IsNullOrEmpty(addedItem))
             {
                 _todo.Add(addedItem);
+                WriteOutput();
+                Console.WriteLine("added to list!");
             }
         }
 
@@ -122,14 +123,15 @@
                 throw;
             }
 
+            WriteOutput();
             _todo.Remove(numberToRemove);
-
-            Console.WriteLine(numberToRemove);
+            Console.WriteLine("removed successfully");
         }
 
         private void Clear()
         {
             _todo.Clear();
+            WriteOutput();
             Console.WriteLine("The list is clear!");
         }
 
@@ -140,6 +142,8 @@
                 Console.WriteLine("The list is empty!");
                 return;
             }
+
+            WriteOutput();
 
             foreach (var item in _todo.List.Select((value, index) => new { value, index }))
             {

@@ -19,7 +19,9 @@
 
         public void Remove(int number)
         {
-            if (number < List.Count || number < 1)
+            int limit = List.Count - 1;
+
+            if (number < limit || number > limit)
             {
                 Console.WriteLine("number is not in range!");
                 return;
